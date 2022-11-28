@@ -7,6 +7,7 @@ sudo add-apt-repository -y ppa:openjdk-r/ppa
 sudo apt-get update
 sudo apt-get install -y openjdk-8-jre-headless scala openssh-server openssh-client syslinux-utils python3-pip socat;
 
+USERS="root `ls /users`"
 
 # Setup password-less ssh between nodes
 for user in $USERS; do
