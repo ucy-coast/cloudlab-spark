@@ -78,20 +78,20 @@ echo "export PYSPARK_PYTHON=python3.6" | sudo tee -a /usr/local/spark/conf/spark
 
 
 
-# Jupyter extension configs
-sudo /usr/local/bin/jupyter contrib nbextension install --system ;
-sudo /usr/local/bin/jupyter nbextensions_configurator enable --system ;
-sudo /usr/local/bin/jupyter nbextension enable code_prettify/code_prettify --system ;
-sudo /usr/local/bin/jupyter nbextension enable execute_time/ExecuteTime --system ;
-sudo /usr/local/bin/jupyter nbextension enable collapsible_headings/main --system ;
-sudo /usr/local/bin/jupyter nbextension enable freeze/main --system ;
-sudo /usr/local/bin/jupyter nbextension enable spellchecker/main --system ;
+# # Jupyter extension configs
+# sudo /usr/local/bin/jupyter contrib nbextension install --system ;
+# sudo /usr/local/bin/jupyter nbextensions_configurator enable --system ;
+# sudo /usr/local/bin/jupyter nbextension enable code_prettify/code_prettify --system ;
+# sudo /usr/local/bin/jupyter nbextension enable execute_time/ExecuteTime --system ;
+# sudo /usr/local/bin/jupyter nbextension enable collapsible_headings/main --system ;
+# sudo /usr/local/bin/jupyter nbextension enable freeze/main --system ;
+# sudo /usr/local/bin/jupyter nbextension enable spellchecker/main --system ;
 
-# Jupyter password
-mkdir -p ~/.jupyter;
-HASHED_PASSWORD=$(python3.6 -c "from notebook.auth import passwd; print(passwd('$JUPYTER_PASSWORD'))");
-echo "c.NotebookApp.password = u'$HASHED_PASSWORD'" >~/.jupyter/jupyter_notebook_config.py;
-echo "c.NotebookApp.open_browser = False" >>~/.jupyter/jupyter_notebook_config.py;
+# # Jupyter password
+# mkdir -p ~/.jupyter;
+# HASHED_PASSWORD=$(python3.6 -c "from notebook.auth import passwd; print(passwd('$JUPYTER_PASSWORD'))");
+# echo "c.NotebookApp.password = u'$HASHED_PASSWORD'" >~/.jupyter/jupyter_notebook_config.py;
+# echo "c.NotebookApp.open_browser = False" >>~/.jupyter/jupyter_notebook_config.py;
 
 
 cp ~/._bashrc /local/.bashrc
@@ -108,7 +108,7 @@ if [ "$duty" = "m" ]; then
 	# sudo nohup socat TCP-LISTEN:4041,fork TCP:${LOCAL_IP}:4040 > /dev/null 2>&1 &
  #    sudo nohup socat TCP-LISTEN:8089,fork TCP:${LOCAL_IP}:8088 > /dev/null 2>&1 &
 	sudo nohup docker run --init -p 3000:3000 -v "/:/home/project:cached" theiaide/theia-python:next > /dev/null 2>&1 &
-	sudo nohup jupyter notebook --no-browser --allow-root --ip localhost --notebook-dir=/ > /dev/null 2>&1 &
+# 	sudo nohup jupyter notebook --no-browser --allow-root --ip localhost --notebook-dir=/ > /dev/null 2>&1 &
 
 
 elif [ "$duty" = "s" ]; then
